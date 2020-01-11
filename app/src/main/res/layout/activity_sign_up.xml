@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignIn1"
+    android:background="@drawable/background1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        tools:ignore="UselessLeaf,UselessParent">
+        <EditText
+            android:id="@+id/editNameUp"
+            android:hint="Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#0e0d0e"
+            android:textColor="#0e0d0e"
+            android:text="Shivom pandey"
+
+            >
+        </EditText>
+
+        <EditText
+            android:id="@+id/editPhoneUp"
+            android:hint=""
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#fff"
+            android:textColor="#0e0d0e"
+            android:inputType="phone"
+            android:text="@string/_03234380625"
+            >
+
+        </EditText>
+        <EditText
+            android:id="@+id/editPasswordUp"
+            android:hint="password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#fff"
+            android:textColor="#fff"
+            android:text="@string/_12345678"
+            android:inputType="numberPassword"
+            android:layout_marginTop="10dp"
+            >
+
+        </EditText>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSignUp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="8dp"
+        android:textColor="@android:color/white"
+        android:text="@string/sign_up"
+        android:background="@drawable/sign_in"
+        tools:ignore="ButtonStyle" />
+
+</RelativeLayout>

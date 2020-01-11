@@ -40,19 +40,22 @@ public class SignIn1 extends AppCompatActivity {
 
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                       mDialog.dismiss();
 
-                       User user=dataSnapshot.child(editPhone.getText().toString()).getValue(User.class);
-                       if(user.getPassword().equals(editPassword.getText().toString()))
-                       {
-                           Toast.makeText(SignIn1.this, "SignIn successfulll", Toast.LENGTH_SHORT).show();
-                       }
-                       else
-                       {
-                           Toast.makeText(SignIn1.this, "Sign in Failed", Toast.LENGTH_SHORT).show();
-                       }
+                        if (dataSnapshot.child(editPhone.getText().toString()).exists()) {
+                              mDialog.dismiss();
+                            User user = dataSnapshot.child(editPhone.getText().toString()).getValue(User.class);
+                            if (user.getPassword().equals(editPassword.getText().toString())) {
+                                Toast.makeText(SignIn1.this, "SignIn successfulll", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(SignIn1.this, "Wrong Password", Toast.LENGTH_SHORT).show();
+                            }
 
 
+                        }
+                        else
+                        {   mDialog.dismiss();
+                            Toast.makeText(SignIn1.this, "User Not Exist", Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                     @Override
