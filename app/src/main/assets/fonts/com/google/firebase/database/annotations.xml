@@ -1,0 +1,8 @@
+<root>
+    <item
+        name='com.google.firebase.database.DataSnapshot com.google.firebase.database.DataSnapshot child(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.Contract'>
+            <val name="pure" val="true" />
+        </annotation>
+    </item>
+</root>
