@@ -22,20 +22,20 @@
             android:layout_height="wrap_content"
             android:textColorHint="#0e0d0e"
             android:textColor="#0e0d0e"
-            android:text="Shivom pandey"
+
 
             >
         </EditText>
 
         <EditText
             android:id="@+id/editPhoneUp"
-            android:hint=""
+            android:hint="Phone Number "
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="#fff"
+            android:textColorHint="#0e0d0e"
             android:textColor="#0e0d0e"
             android:inputType="phone"
-            android:text="@string/_03234380625"
+
             >
 
         </EditText>
@@ -44,9 +44,8 @@
             android:hint="password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="#fff"
-            android:textColor="#fff"
-            android:text="@string/_12345678"
+            android:textColorHint="#0e0d0e"
+            android:textColor="#0e0d0e"
             android:inputType="numberPassword"
             android:layout_marginTop="10dp"
             >
