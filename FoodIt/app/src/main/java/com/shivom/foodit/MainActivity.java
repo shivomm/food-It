@@ -2,6 +2,7 @@ package com.shivom.foodit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +25,9 @@ TextView txtSlogan;
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent signIn=new Intent(MainActivity.this,SignIn1.class);
+                startActivity(signIn);
+
 
             }
         });
@@ -31,6 +35,9 @@ TextView txtSlogan;
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,SignUp.class);
+                startActivity(intent);
+
 
             }
         });

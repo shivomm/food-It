@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.common.internal.service.Common;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,31 +30,46 @@ public class SignIn1 extends AppCompatActivity {
        editPassword=(EditText)findViewById(R.id.editPassword);
        editPhone=(EditText)findViewById(R.id.editPhone);
        btnSignIn=(Button)findViewById(R.id.btnSignIn);
-        final FirebaseDatabase  database=FirebaseDatabase.getInstance();
-        final DatabaseReference table_user=database.getReference(" User");
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        final DatabaseReference table_user = firebaseDatabase.getReference("User");
+
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final ProgressDialog mDialog =new ProgressDialog(SignIn1.this);
-                mDialog.setMessage("please  waiting");
-                mDialog.show();
-                table_user.addValueEventListener(new ValueEventListener() {
+                final ProgressDialog progressDialog = new ProgressDialog(SignIn1.this);
+                progressDialog.setMessage("Please Wait...");
+                progressDialog.show();
 
+                table_user.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                       mDialog.dismiss();
+                        //Checking User avail
+                        if(dataSnapshot.child(editPhone.getText().toString()).exists())
+                        {
+                            //Get User data
+                            progressDialog.dismiss();
+                            User user = dataSnapshot.child(editPhone.getText().toString()).getValue(User.class);
+                           // assert user != null;
+                            if (user.getPassword().equals(editPassword.getText().toString()))
+                            {
+                                progressDialog.dismiss();
 
-                       User user=dataSnapshot.child(editPhone.getText().toString()).getValue(User.class);
-                       if(user.getPassword().equals(editPassword.getText().toString()))
-                       {
-                           Toast.makeText(SignIn1.this, "SignIn successfulll", Toast.LENGTH_SHORT).show();
-                       }
-                       else
-                       {
-                           Toast.makeText(SignIn1.this, "Sign in Failed", Toast.LENGTH_SHORT).show();
-                       }
+                                Toast.makeText(SignIn1.this, ""+user.getName(), Toast.LENGTH_SHORT).show();
+                                user.setPhone(editPhone.getText().toString());
+                                Intent intent = new Intent(SignIn1.this, Home.class);
+                                startActivity(intent);
 
-
+                            } else
+                            {
+                                progressDialog.dismiss();
+                                Toast.makeText(SignIn1.this, "Sign in failed!", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        else
+                        {
+                            progressDialog.dismiss();
+                            Toast.makeText(SignIn1.this, "User not exists!", Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                     @Override
@@ -62,5 +79,6 @@ public class SignIn1 extends AppCompatActivity {
                 });
             }
         });
+
     }
 }
