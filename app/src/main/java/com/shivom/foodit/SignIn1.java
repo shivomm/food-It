@@ -53,12 +53,12 @@ public class SignIn1 extends AppCompatActivity {
                             if (user.getPassword().equals(editPassword.getText().toString()))
                             {
                                 progressDialog.dismiss();
-                                //remember me
-                                Toast.makeText(SignIn1.this, "SignIn Successfull", Toast.LENGTH_SHORT).show();
+
+                                Toast.makeText(SignIn1.this, ""+user.getName(), Toast.LENGTH_SHORT).show();
                                 user.setPhone(editPhone.getText().toString());
-                                Intent intent = new Intent(SignIn1.this, HomeActivity.class);
+                                Intent intent = new Intent(SignIn1.this, Home.class);
                                 startActivity(intent);
-                                finish();
+
                             } else
                             {
                                 progressDialog.dismiss();
