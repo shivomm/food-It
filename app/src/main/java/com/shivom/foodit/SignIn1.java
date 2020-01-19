@@ -1,7 +1,7 @@
 package com.shivom.foodit;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.shivom.foodit.Model.User;
+import com.shivom.foodit.common.Comman;
 
 public class SignIn1 extends AppCompatActivity {
   EditText editPhone,editPassword;
@@ -57,7 +58,9 @@ public class SignIn1 extends AppCompatActivity {
                                 Toast.makeText(SignIn1.this, ""+user.getName(), Toast.LENGTH_SHORT).show();
                                 user.setPhone(editPhone.getText().toString());
                                 Intent intent = new Intent(SignIn1.this, Home.class);
+                                Comman.currentUser=user;
                                 startActivity(intent);
+                                finish();
 
                             } else
                             {
